@@ -361,12 +361,13 @@ body { font-family: var(--font-sans); }
     .grove-num { display: none; }
 
     .deck-controls {
-        width: 100%; bottom: 0; padding: 26px 0 16px;
+        left: 0; right: 0; width: 100%; bottom: 0; transform: none;
+        padding: 26px 0 16px;
         background: linear-gradient(to top, var(--bg-light) 40%, transparent);
         pointer-events: none;
     }
     .deck-controls .nav-dots { pointer-events: auto; }
-    .nav-dots { gap: 14px; }
+    .nav-dots { gap: 14px; justify-content: center; }
     .nav-dots button { width: 8px; height: 8px; }
     .edit-hotzone, .edit-toggle { display: none !important; }
 
