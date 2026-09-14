@@ -423,6 +423,47 @@ body { font-family: var(--font-sans); }
     .lightbox-close { top: 14px; right: 14px; width: 40px; height: 40px; }
     .lightbox-img { max-height: 68vh; }
 }
+
+/* Cost Breakdown table — responsive: full table on desktop,
+   stacked cards with inline mini-labels on mobile. */
+.cost-table { display: flex; flex-direction: column; margin-top: var(--gap-lg); }
+.cost-table-head {
+    display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; column-gap: var(--gap-md);
+    padding-bottom: 12px; border-bottom: 1px solid var(--fg-light);
+}
+.cost-table-head .ct-col-value {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--fg-light-2); text-align: right;
+}
+.cost-table-head .ct-col-value.is-accent { color: var(--accent); }
+.cost-row {
+    display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; column-gap: var(--gap-md);
+    align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border-light);
+}
+.cost-row.total { border-bottom: none; border-top: 1px solid var(--fg-light); margin-top: 2px; padding-top: 20px; }
+.ct-name { font-family: var(--font-sans); font-weight: 400; font-size: 19px; color: var(--fg-light); }
+.cost-row.total .ct-name { font-family: var(--font-serif); font-size: 24px; }
+.ct-desc { font-family: var(--font-sans); font-weight: 300; font-size: 13px; line-height: 1.45; color: var(--fg-light-2); margin-top: 5px; max-width: 92%; }
+.ct-values { display: contents; }
+.ct-value-label { display: none; }
+.ct-value { font-family: var(--font-mono); font-size: 17px; text-align: right; color: var(--fg-light); }
+.cost-row.total .ct-value { font-family: var(--font-serif); font-size: 23px; }
+.ct-value.is-accent { color: var(--accent); }
+
+@media (max-width: 900px) {
+    .cost-table-head { display: none; }
+    .cost-row { grid-template-columns: 1fr; row-gap: 14px; padding: 20px 0; }
+    .cost-row.total { padding-top: 22px; }
+    .ct-name { font-size: 17px; }
+    .ct-desc { font-size: 13px; max-width: 100%; }
+    .ct-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .ct-value-label {
+        display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em;
+        text-transform: uppercase; color: var(--fg-light-2); margin-bottom: 4px;
+    }
+    .ct-value { text-align: left; font-size: 15px; }
+    .cost-row.total .ct-value { font-size: 18px; }
+}
 </style>
 </head>
 <body>
@@ -468,7 +509,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Reference Points</span>
-            <span>01 / 07</span>
+            <span>01 / 08</span>
         </div>
     </div>
 </section>
@@ -516,7 +557,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Layout</span>
-            <span>02 / 07</span>
+            <span>02 / 08</span>
         </div>
     </div>
 </section>
@@ -546,7 +587,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Full Proposal</span>
-            <span>03 / 07</span>
+            <span>03 / 08</span>
         </div>
     </div>
 </section>
@@ -581,7 +622,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Full Proposal</span>
-            <span>04 / 07</span>
+            <span>04 / 08</span>
         </div>
     </div>
 </section>
@@ -620,7 +661,106 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Proposal Comparison</span>
-            <span>05 / 07</span>
+            <span>05 / 08</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SLIDE — COST BREAKDOWN BY CATEGORY (proposal) ============ -->
+<section class="slide light" data-title="Cost Breakdown">
+    <div class="slide-frame">
+        <div class="chrome-bar">
+            <span>Shop 4 Renovation</span>
+            <span>Management Review — Sep 2026</span>
+        </div>
+        <div class="slide-content">
+            <div class="kicker edit-text" data-anim="fade-in" data-delay="0">Cost Breakdown</div>
+            <div class="rule-coral" data-anim="reveal-right" data-delay="1"></div>
+            <h2 class="h2 edit-text" data-anim="fade-up" data-delay="1">Cost by <em>Category</em></h2>
+
+            <div class="cost-table" data-anim="fade-up" data-delay="2">
+                <div class="cost-table-head">
+                    <div></div>
+                    <div class="ct-col-value">Full Requirement</div>
+                    <div class="ct-col-value">Our Proposal</div>
+                    <div class="ct-col-value is-accent">Savings</div>
+                </div>
+
+                <div class="cost-row">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">Site setup, safety &amp; cleaning</div>
+                        <div class="ct-desc edit-text">Site insurance, safety supervision, site protection, daily &amp; final cleaning</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$111,600</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$74,600</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">HK$37,000</div></div>
+                    </div>
+                </div>
+
+                <div class="cost-row">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">New office construction</div>
+                        <div class="ct-desc edit-text">Partitions, enclosed office walls &amp; doors, plus the electrical, lighting, air-conditioning and fire sprinkler work that exists specifically because this enclosed room is being built</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$266,400</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$266,400</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">—</div></div>
+                    </div>
+                </div>
+
+                <div class="cost-row">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">Finishes</div>
+                        <div class="ct-desc edit-text">Wall &amp; ceiling paint, flooring, millwork/joinery</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$307,800</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$173,600</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">HK$134,200</div></div>
+                    </div>
+                </div>
+
+                <div class="cost-row">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">Building systems (whole unit)</div>
+                        <div class="ct-desc edit-text">General electrical infrastructure serving the whole 44 sqm (sockets, WiFi point, distribution board, emergency/exit signage) and feature lighting</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$100,200</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$100,200</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">—</div></div>
+                    </div>
+                </div>
+
+                <div class="cost-row">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">Furniture &amp; workstations</div>
+                        <div class="ct-desc edit-text">Desks, chairs, storage cabinets</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$49,300</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$49,300</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">—</div></div>
+                    </div>
+                </div>
+
+                <div class="cost-row total">
+                    <div class="ct-label">
+                        <div class="ct-name edit-text">TOTAL (excl. tax)</div>
+                    </div>
+                    <div class="ct-values">
+                        <div class="ct-value-block"><div class="ct-value-label">Full Req.</div><div class="ct-value edit-text">HK$835,300</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Our Proposal</div><div class="ct-value edit-text">HK$664,100</div></div>
+                        <div class="ct-value-block"><div class="ct-value-label">Savings</div><div class="ct-value is-accent edit-text">HK$171,200</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot-bar">
+            <span>Cost Breakdown</span>
+            <span>06 / 08</span>
         </div>
     </div>
 </section>
@@ -654,7 +794,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Decision Required</span>
-            <span>06 / 07</span>
+            <span>07 / 08</span>
         </div>
     </div>
 </section>
@@ -703,7 +843,7 @@ body { font-family: var(--font-sans); }
         </div>
         <div class="foot-bar">
             <span>Timeline</span>
-            <span>07 / 07</span>
+            <span>08 / 08</span>
         </div>
     </div>
 </section>
